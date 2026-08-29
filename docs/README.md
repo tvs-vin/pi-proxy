@@ -1,7 +1,7 @@
 # pi-proxy
 ### Hello World 2026 hackathon project
 <p style="float: left; margin: 0 15px 15px 0;">
-  <img src="docs/images/logo.png" alt="Logo" width="150">
+  <img src="images/logo.png" alt="Logo" width="150">
 </p>
 
 This project is made by 
