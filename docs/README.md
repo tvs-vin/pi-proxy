@@ -6,7 +6,7 @@
 
 This project is made by 
  - * Brad Gaw (tvs-vin)
- - * YALL ADD YOUR NAMES HERE
+ - * Hugo Nunez Matute
 
  Goal of the project
 
