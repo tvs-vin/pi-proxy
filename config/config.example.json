@@ -1,0 +1,7 @@
+{
+  "ap_interface": "wlan0",
+  "upstream_interface": "wlan1",
+  "dnsmasq_leases": "/var/lib/misc/dnsmasq.leases",
+  "admin_password_hash": "REPLACE_WITH_OUTPUT_OF_setup_config.py",
+  "secret_key": "REPLACE_WITH_RANDOM_HEX_setup_config.py"
+}

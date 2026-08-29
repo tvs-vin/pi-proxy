@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pi-proxy</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div id="login-view" class="view">
+  <form id="login-form" class="card login-card">
+    <h1>pi-proxy</h1>
+    <p class="muted">Sign in to manage this access point</p>
+    <input id="login-password" type="password" placeholder="Admin password" autocomplete="current-password" required>
+    <button type="submit">Sign in</button>
+    <p id="login-error" class="error" hidden></p>
+  </form>
+</div>
+
+<div id="app-view" class="view" hidden>
+  <header>
+    <h1>pi-proxy</h1>
+    <nav>
+      <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+      <button class="tab-btn" data-tab="wifi">WiFi</button>
+      <button class="tab-btn" data-tab="vpn">VPN</button>
+      <button class="tab-btn" data-tab="upstream">Upstream</button>
+    </nav>
+    <button id="logout-btn" class="ghost">Sign out</button>
+  </header>
+
+  <main>
+    <section id="tab-dashboard" class="tab active">
+      <div class="grid">
+        <div class="card stat">
+          <span class="stat-label">CPU</span>
+          <span id="stat-cpu" class="stat-value">–</span>
+        </div>
+        <div class="card stat">
+          <span class="stat-label">Memory</span>
+          <span id="stat-mem" class="stat-value">–</span>
+        </div>
+        <div class="card stat">
+          <span class="stat-label">Uptime</span>
+          <span id="stat-uptime" class="stat-value">–</span>
+        </div>
+        <div class="card stat">
+          <span class="stat-label">Load avg</span>
+          <span id="stat-load" class="stat-value">–</span>
+        </div>
+        <div class="card stat">
+          <span class="stat-label">AP throughput</span>
+          <span id="stat-ap-net" class="stat-value">–</span>
+        </div>
+        <div class="card stat">
+          <span class="stat-label">Upstream throughput</span>
+          <span id="stat-up-net" class="stat-value">–</span>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Connected clients</h2>
+        <table id="clients-table">
+          <thead><tr><th>Hostname</th><th>IP</th><th>MAC</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <p id="clients-empty" class="muted" hidden>No devices connected.</p>
+      </div>
+    </section>
+
+    <section id="tab-wifi" class="tab">
+      <div class="card">
+        <div class="row-between">
+          <h2>Upstream WiFi</h2>
+          <button id="wifi-scan-btn">Scan</button>
+        </div>
+        <p id="wifi-status" class="muted"></p>
+        <ul id="wifi-list" class="list"></ul>
+      </div>
+    </section>
+
+    <section id="tab-vpn" class="tab">
+      <div class="card">
+        <h2>VPN connections</h2>
+        <ul id="vpn-list" class="list"></ul>
+      </div>
+      <div class="card">
+        <h2>Import VPN profile</h2>
+        <form id="vpn-import-form">
+          <select id="vpn-type">
+            <option value="wireguard">WireGuard</option>
+            <option value="openvpn">OpenVPN</option>
+          </select>
+          <input id="vpn-file" type="file" required>
+          <button type="submit">Import</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="tab-upstream" class="tab">
+      <div class="card">
+        <h2>Upstream device</h2>
+        <form id="upstream-form">
+          <label><input type="radio" name="method" value="auto" checked> DHCP (automatic)</label>
+          <label><input type="radio" name="method" value="manual"> Static</label>
+          <div id="upstream-manual-fields" hidden>
+            <input id="upstream-address" placeholder="Address (e.g. 192.168.1.50/24)">
+            <input id="upstream-gateway" placeholder="Gateway (e.g. 192.168.1.1)">
+            <input id="upstream-dns" placeholder="DNS servers, comma separated">
+          </div>
+          <button type="submit">Apply</button>
+        </form>
+      </div>
+    </section>
+
+    <p id="toast" class="toast" hidden></p>
+  </main>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

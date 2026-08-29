@@ -1,0 +1,24 @@
+[Unit]
+Description=pi-proxy web UI
+After=network-online.target NetworkManager.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Environment=PI_PROXY_CONFIG=/etc/pi-proxy/config.json
+WorkingDirectory=/opt/pi-proxy/web
+ExecStart=/opt/pi-proxy/web/venv/bin/python /opt/pi-proxy/web/wsgi.py
+Restart=on-failure
+RestartSec=2
+# Minimal footprint / hardening. Root is required for nmcli network changes,
+# so we constrain capabilities instead of dropping privileges entirely.
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/etc/pi-proxy /var/lib/misc
+ProtectHome=true
+MemoryHigh=150M
+MemoryMax=200M
+
+[Install]
+WantedBy=multi-user.target
