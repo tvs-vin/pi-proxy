@@ -1,1 +1,9 @@
-
+{
+    "connection traffic": {
+        "upstream": {
+            "bytes sent": 294728664,
+            "bytes received": 194386386
+        },
+    },
+    "connected clients": 234
+}
