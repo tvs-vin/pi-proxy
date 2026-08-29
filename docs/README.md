@@ -8,6 +8,7 @@ This project is made by
  - * Brad Gaw (tvs-vin)
  - * Hugo Nunez Matute
  - * Nate Anderson
+ - * 
 
  Goal of the project
 
